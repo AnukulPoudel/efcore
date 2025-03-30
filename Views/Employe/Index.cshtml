@@ -1,0 +1,9 @@
+﻿@model efcore.Models.Employe
+
+<form method="post" asp-controller="Employe" asp-action="Submit">
+    Employee Name<input asp-for="name"><br>
+    <span asp-validation-for="name"></span>
+    Employee Salary<input asp-for="salary"><br>
+    <span asp-validation-for="salary"></span>
+    <input type="submit" value="submit">
+</form>
