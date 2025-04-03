@@ -20,13 +20,40 @@ namespace _.Controllers
         {
             if (ModelState.IsValid)
             {
-                // _Context.employes.Add(employe);
+                _Context.employes.Add(employe);
                 Console.WriteLine ("id"+employe.eid+"Name"+employe.name+" Salary"+employe.salary);   
+                _Context.SaveChanges();
+                return Content("Thank You!");
+
+            }
+            return View(employe);
+        }
+        public IActionResult Delete(int id)
+        {
+            var employe = _Context.employes.Find(id);
+            _Context.employes.Remove(employe);
+            _Context.SaveChanges();
+            return Content("User Deleted");
+        }
+
+        [HttpPost]
+        public IActionResult Update(Employe employe)
+        {
+            if (ModelState.IsValid)
+            {
+                _Context.employes.Update(employe);
+                Console.WriteLine ("id"+employe.eid+"Name"+employe.name+" Salary"+employe.salary);   
+                _Context.SaveChanges();
                 return Content("Thank You!");
 
             }
             return View(employe);
         }
 
+        public IActionResult Display(int id)
+        {
+            var employe = _Context.employes.Find(id);
+            return Content("id"+employe.eid+"Name"+employe.name+" Salary"+employe.salary);
+        }
     }
 }

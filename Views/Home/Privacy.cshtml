@@ -1,6 +1,47 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@* import React from 'react'
+import { useState } from 'react'
 
-<p>Use this page to detail your site's privacy policy.</p>
+const App = () => {
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+
+// console.log(name,email,password);
+
+const handleSubmit=(e)=>{
+  // e.preventDefault();
+if(name==""|| email==""|| password==""){
+  alert("Please fill all the fields");
+  return;
+}
+if(!email.includes("@")){
+  alert("Please enter a valid email");
+  return;
+}
+if(password.length<6){
+  alert("Password must be at least 6 characters long");
+  return;
+}
+
+alert("Form submitted successfully");
+}
+  
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        {/* <label htmlFor="name">Name:</label> */}
+        Name:
+        <input type="text"  onChange={(e)=>setName(e.target.value)}/>
+        {/* <label htmlFor="email">Email:</label> */}
+        Email:
+        <input type="email" onChange={(e)=>setEmail(e.target.value)}/>
+        {/* <label htmlFor="password">Password:</label> */}
+        password:
+        <input type="password" onChange={(e)=>setPassword(e.target.value)} />
+        <button>Submit</button>
+      </form>
+    </div>
+  )
+}
+
+export default App *@
